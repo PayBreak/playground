@@ -10,12 +10,22 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * The table name which the model uses
+     *
+     * @var string
+     */
+    protected $table = 'employees';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'nickname',
+        'email',
+        'password',
     ];
 
     /**
@@ -25,5 +35,16 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that are datse
+     *
+     * @author EB
+     * @var array
+     */
+    protected $dates = [
+        'credted_at',
+        'updated_at',
     ];
 }
