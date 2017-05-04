@@ -44,7 +44,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = [
-        'credted_at',
+        'created_at',
         'updated_at',
     ];
 }
