@@ -14,7 +14,8 @@
         <!-- Stop vue kicking off (Cannot read property 'csrfToken' of undefined) -->
         <script>
             window.Laravel = <?php echo json_encode([
-                    'csrfToken' => csrf_token(),
+                'csrfToken' => csrf_token(),
+                'api_token' => (Auth::user() ? Auth::user()->api_token : '')
             ]); ?>
         </script>
     </head>
