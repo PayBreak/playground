@@ -25,6 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->string('nickname');
             $table->string('email')->unique();
             $table->string('password');
+            $table->char('api_token', 60)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
