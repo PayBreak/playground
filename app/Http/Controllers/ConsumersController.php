@@ -21,6 +21,9 @@ class ConsumersController extends Controller
      */
     public function index(Request $request)
     {
-        return Consumers::all();
+        $query = Consumers::query();
+        $data = $query->paginate($request->get('per_page', 5));
+
+        return $data;
     }
 }
