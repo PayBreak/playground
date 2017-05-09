@@ -1,29 +1,17 @@
-<!--<template>-->
-    <!--<div class="filter-bar ui basic segment grid">-->
-        <!--<div class="ui form">-->
-            <!--<div class="inline field">-->
-                <!--<label>Search for:</label>-->
-                <!--<input type="text" v-model="filterText" class="three wide column" @keyup.enter="doFilter" placeholder="name, nickname, or email">-->
-                <!--<button class="ui primary button" @click="doFilter">Go</button>-->
-                <!--<button class="ui button" @click="resetFilter">Reset</button>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</template>-->
 <template>
     <div ref="filterTemplate">
         <template v-if="filtersAdded">
-                <div class="level">
-                    <div class="level-left">
-                        <template v-for="n, key in filtersAdded">
-                            <div class="level-item">
-                                <span class="tag is-primary">
-                                {{ n.title }}: {{n.filterValue}}
-                                <button class="delete is-small" @click="removeFilter(n.name, key)"></button>
-                            </span>
-                            </div>
-                        </template>
-                    </div>
+            <div class="level">
+                <div class="level-left">
+                    <template v-for="n, key in filtersAdded">
+                        <div class="level-item">
+                            <span class="tag is-primary">
+                            {{ n.title }}: {{n.filterValue}}
+                            <button class="delete is-small" @click="removeFilter(n.name, key)"></button>
+                        </span>
+                        </div>
+                    </template>
+                </div>
             </div>
         </template>
         <template v-if="filtersRemaining">
@@ -97,6 +85,7 @@
                 this.$delete(this.filtersRemaining, removeIndex)
 
                 this.$events.fire('filter-set', this.filtersAdded)
+                this.filterInputRefresh()
             },
             removeFilter (filterName, key) {
                 // Get the index of the filter which was passed into the component originally
@@ -109,9 +98,14 @@
                 this.filtersRemaining.push(this.filters[givenFilterIndex])
                 // Fire event so other components can handle changes
                 this.$events.fire('filter-remove', filterName)
+                // Refresh the inputs
+                this.filterInputRefresh()
             },
             filterInputRefresh () {
-
+                // Set the dropdown filter back to default
+                this.filterName = ''
+                // set the input filter back to default
+                this.filterValue = ''
             }
         }
     }

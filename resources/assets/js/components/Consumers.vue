@@ -76,16 +76,9 @@
                 addedFilters: {}
             }
         },
-//        watch: {
-//            additionalQueryParameters () {
-//                this.remainingFilters = this.fields.filter(x => this.additionalQueryParameters.hasOwnProperty(x.name) > 0);
-//            }
-//        },
         mounted () {
-//            this.$events.$on('filter-set', eventData => this.onFilterSet(eventData))
             this.$events.$on('filter-set', eventData => this.onFilterAdd(eventData))
             this.$events.$on('filter-remove', eventData => this.onFilterRemove(eventData))
-//            this.$events.$on('filter-reset', e => this.onFilterReset())
         },
         methods: {
             onPaginationData (paginationData) {
@@ -101,31 +94,23 @@
                 this.$refs.consumersTable.toggleDetailRow(data.id)
             },
             onFilterAdd (eventData) {
+                // Format the filters correct to be put into 'additionalQueryParameters'
                 let filters = {}
                 Object.keys(eventData).forEach(function(key) {
-                    console.log(eventData)
                     filters[eventData[key].name] = eventData[key].filterValue
                 });
-
+                // Add the filters with the default query parameters
                 this.additionalQueryParameters = Object.assign(this.defaultQueryParameters, filters)
                 this.filterRefresh()
             },
             onFilterRemove (removedFilter) {
+                // Remove the filter from 'additionalQueryParameters'
                 this.$delete(this.additionalQueryParameters, removedFilter)
                 this.filterRefresh()
             },
             filterRefresh() {
                 Vue.nextTick(() => this.$refs.consumersTable.refresh())
-            },
-            onFilterSet (filterText) {
-                this.additionalQueryParameters.first_name = filterText
-                Vue.nextTick( () => this.$refs.consumersTable.refresh())
-            },
-            onFilterReset () {
-                this.additionalQueryParameters = this.defaultQueryParameters
-                Vue.nextTick( () => this.$refs.consumersTable.refresh())
             }
         }
     }
 </script>
-diff = A.filter(x => B.indexOf(x) < 0 );
