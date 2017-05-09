@@ -11,7 +11,6 @@
     <!--</div>-->
 <!--</template>-->
 <template>
-    <div class="container">
     <div ref="filterTemplate">
         <template v-if="filtersAdded">
                 <div class="level">
@@ -63,7 +62,6 @@
                 </div>
             </div>
         </template>
-    </div>
     </div>
 </template>
 
