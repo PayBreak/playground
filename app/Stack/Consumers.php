@@ -31,6 +31,23 @@ class Consumers extends Authenticatable
     ];
 
     /**
+     * The attributes that are visible when serializing
+     *
+     * @author EB
+     * @var array
+     */
+    protected $visible = [
+        'id',
+        'title',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'email',
+        'created_at',
+        'updated_at',
+    ];
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -40,7 +57,7 @@ class Consumers extends Authenticatable
     ];
 
     /**
-     * The attributes that are datse
+     * The attributes that are dates
      *
      * @author EB
      * @var array
