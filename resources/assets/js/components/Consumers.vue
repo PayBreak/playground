@@ -1,49 +1,32 @@
 <template>
-    <div>
-        <filter-bar :filters="fields"></filter-bar>
-        <vuetable ref="consumersTable"
-            api-url="/api/consumers"
-            :fields="fields"
-            pagination-path=""
-            :per-page="15"
-            detail-row-component="consumers-detail-row"
-            :append-params="additionalQueryParameters"
-            @vuetable:cell-clicked="onCellClicked"
-            @vuetable:pagination-data="onPaginationData"
-        ></vuetable>
-        <div class="level">
-            <vuetable-pagination ref="consumersPagination"
-                 @vuetable-pagination:change-page="onChangePage"
-            ></vuetable-pagination>
-            <vuetable-pagination-info ref="paginationInfo"></vuetable-pagination-info>
-        </div>
-    </div>
+    <grid-table
+            :tableFields="fields"
+            :detailRowComponentName="detailRowComponentName"
+            :gridFilterComponentName="gridFilterComponentName"
+            :apiUrl="apiUrl"
+    ></grid-table>
 </template>
 
 <script>
-    import Vuetable from 'vuetable-2/src/components/Vuetable'
-    import VueEvents from 'vue-events'
-//    import VuetablePagination from 'vuetable-2/src/components/Vue tablePagination' // <-- Default
-    import VuetablePagination from './layout/Pagination' // <-- Custom
-    import VuetablePaginationInfo from './layout/PaginationInfo' // <-- Custom
+    import GridTable from './layout/GridTable'
 
-    import DetailRow from './ConsumersDetails' // <-- Custom (?)
+    // Detail row component
+    import DetailRow from './ConsumersDetails'
+    Vue.component('consumers-detail-row-boi', DetailRow)   // <--- register the component to Vue
+
+    // Grid filter component
     import FilterBar from './layout/Filter'
-
-    Vue.component('consumers-detail-row', DetailRow)   // <--- register the component to Vue
     Vue.component('consumers-filter-bar', FilterBar)   // <--- register the component to Vue
-    Vue.use(VueEvents)
 
     export default {
         components: {
-            Vuetable,
-            VuetablePagination,
-            VuetablePaginationInfo,
-            DetailRow,
-            FilterBar
+            GridTable
         },
         data: function() {
             return {
+                detailRowComponentName: 'consumers-detail-row-boi',
+                gridFilterComponentName: 'consumers-filter-bar',
+                apiUrl: '/api/consumers',
                 fields: [
                     {
                         name: 'id',
@@ -66,50 +49,7 @@
                         title: 'Date of Birth',
                         titleClass: 'sample-class-on-title-that-does-nothing'
                     }
-                ],
-                additionalQueryParameters: {
-                    api_token: window.Laravel.api_token
-                },
-                defaultQueryParameters: {
-                    api_token: window.Laravel.api_token
-                },
-                addedFilters: {}
-            }
-        },
-        mounted () {
-            this.$events.$on('filter-set', eventData => this.onFilterAdd(eventData))
-            this.$events.$on('filter-remove', eventData => this.onFilterRemove(eventData))
-        },
-        methods: {
-            onPaginationData (paginationData) {
-                this.$refs.consumersPagination.setPaginationData(paginationData)
-                this.$refs.paginationInfo.setPaginationData(paginationData)
-            },
-            onChangePage (page) {
-                console.log(this.$props);
-                this.$refs.consumersTable.changePage(page)
-            },
-            onCellClicked (data, field, event) {
-                console.log('cellClicked: ', field.name)
-                this.$refs.consumersTable.toggleDetailRow(data.id)
-            },
-            onFilterAdd (eventData) {
-                // Format the filters correct to be put into 'additionalQueryParameters'
-                let filters = {}
-                Object.keys(eventData).forEach(function(key) {
-                    filters[eventData[key].name] = eventData[key].filterValue
-                });
-                // Add the filters with the default query parameters
-                this.additionalQueryParameters = Object.assign(this.defaultQueryParameters, filters)
-                this.filterRefresh()
-            },
-            onFilterRemove (removedFilter) {
-                // Remove the filter from 'additionalQueryParameters'
-                this.$delete(this.additionalQueryParameters, removedFilter)
-                this.filterRefresh()
-            },
-            filterRefresh() {
-                Vue.nextTick(() => this.$refs.consumersTable.refresh())
+                ]
             }
         }
     }
