@@ -11,12 +11,12 @@
     import GridTable from './layout/GridTable'
 
     // Detail row component
-    import DetailRow from './ConsumersDetails'
-    Vue.component('consumers-detail-row-boi', DetailRow)   // <--- register the component to Vue
+    import DetailRow from './layout/details/ConsumersDetail'
+    Vue.component('consumers-detail-row', DetailRow)   // <--- register the component to Vue
 
     // Grid filter component
-    import FilterBar from './layout/Filter'
-    Vue.component('consumers-filter-bar', FilterBar)   // <--- register the component to Vue
+    import FilterBar from './layout/GridTableFilter'
+    Vue.component('filter-bar', FilterBar)   // <--- register the component to Vue
 
     export default {
         components: {
@@ -24,8 +24,8 @@
         },
         data: function() {
             return {
-                detailRowComponentName: 'consumers-detail-row-boi',
-                gridFilterComponentName: 'consumers-filter-bar',
+                detailRowComponentName: 'consumers-detail-row',
+                gridFilterComponentName: 'filter-bar',
                 apiUrl: '/api/consumers',
                 fields: [
                     {

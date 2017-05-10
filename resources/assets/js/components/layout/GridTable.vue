@@ -32,8 +32,8 @@
     import Vuetable from 'vuetable-2/src/components/Vuetable'
     import VueEvents from 'vue-events'
 
-    import VuetablePagination from './Pagination' // <-- Custom
-    import VuetablePaginationInfo from './PaginationInfo' // <-- Custom
+    import VuetablePagination from './pagination/Pagination' // <-- Custom
+    import VuetablePaginationInfo from './pagination/PaginationInfo' // <-- Custom
 
     Vue.use(VueEvents)
 
