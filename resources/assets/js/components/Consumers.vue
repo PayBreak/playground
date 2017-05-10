@@ -1,9 +1,9 @@
 <template>
     <grid-table
-            :tableFields="fields"
-            :detailRowComponentName="detailRowComponentName"
-            :gridFilterComponentName="gridFilterComponentName"
-            :apiUrl="apiUrl"
+        :tableFields="fields"
+        :detailRowComponentName="detailRowComponentName"
+        :gridFilterComponentName="gridFilterComponentName"
+        :apiUrl="apiUrl"
     ></grid-table>
 </template>
 
