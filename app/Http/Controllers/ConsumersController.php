@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Stack\Consumers;
+use App\Stack\Consumer;
 use Illuminate\Http\Request;
 
 /**
@@ -20,6 +20,6 @@ class ConsumersController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->queryModel(new Consumers(), $request);
+        return $this->queryModel(new Consumer(), $request);
     }
 }
