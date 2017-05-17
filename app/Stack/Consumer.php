@@ -5,7 +5,7 @@ namespace App\Stack;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Consumers extends Authenticatable
+class Consumer extends Authenticatable
 {
     use Notifiable;
 
@@ -14,7 +14,7 @@ class Consumers extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'consumers';
+    protected $table = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +25,7 @@ class Consumers extends Authenticatable
         'title',
         'first_name',
         'last_name',
-        'date_of_birth',
+        'dob',
         'email',
         'password',
     ];
@@ -41,10 +41,10 @@ class Consumers extends Authenticatable
         'title',
         'first_name',
         'last_name',
-        'date_of_birth',
+        'dob',
         'email',
-        'created_at',
-        'updated_at',
+//        'created_at',
+//        'updated_at',
     ];
 
     /**
@@ -62,8 +62,8 @@ class Consumers extends Authenticatable
      * @author EB
      * @var array
      */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
+//    protected $dates = [
+//        'created_at',
+//        'updated_at',
+//    ];
 }
