@@ -14,7 +14,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'employees';
+    protected $table = 'employee';
 
     /**
      * The attributes that are mass assignable.
