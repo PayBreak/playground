@@ -21,7 +21,12 @@
     </head>
     <body>
         <div id="app">
-            @yield('content')
+            {{--@if(Auth::user())--}}
+                <navigation></navigation>
+            {{--@endif--}}
+            <section class="container">
+                @yield('content')
+            </section>
         </div>
 
         @yield('before-body-close')
