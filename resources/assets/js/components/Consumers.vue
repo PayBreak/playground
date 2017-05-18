@@ -45,7 +45,7 @@
                         title: 'Email Address'
                     },
                     {
-                        name: 'date_of_birth',
+                        name: 'dob',
                         title: 'Date of Birth',
                         titleClass: 'sample-class-on-title-that-does-nothing'
                     }
