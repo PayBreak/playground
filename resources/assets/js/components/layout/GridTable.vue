@@ -3,8 +3,9 @@
         <template v-if="useGridFilterComponent">
             <component
                 :is="gridFilterComponentName"
-                :filters="tableFields"
+                :filters="filterableFields"
             ></component>
+            <br/>
         </template>
         <vuetable ref="tableComponent"
             :api-url="apiUrl"
@@ -12,6 +13,7 @@
             :per-page="perPage"
             :detail-row-component="detailRowComponentName"
             :append-params="additionalQueryParameters"
+            :css="css"
             pagination-path=""
             @vuetable:cell-clicked="onCellClicked"
             @vuetable:pagination-data="onPaginationData"
@@ -75,6 +77,14 @@
             perPage: {
                 type: Number,
                 default: 15
+            },
+            css: {
+                type: Object,
+                default () {
+                    return {
+                        tableClass: 'table is-bordered is-striped is-narrow'
+                    }
+                }
             }
         },
         mounted () {
@@ -85,6 +95,15 @@
             useGridFilterComponent () {
                 return this.detailRowComponent !== ''
             },
+            filterableFields: function () {
+                return this.tableFields.filter(item => {
+                    return (
+                            item.hasOwnProperty('filterable')
+                                ? (item.filterable)
+                                : true
+                        )
+                })
+            }
         },
         methods: {
             onPaginationData (paginationData) {
