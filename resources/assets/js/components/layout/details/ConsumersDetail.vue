@@ -18,7 +18,7 @@
         </div>
         <div class="inline field">
             <label>Bday: </label>
-            <span>{{rowData.date_of_birth}}</span>
+            <span>{{rowData.dob}}</span>
         </div>
     </div>
 </template>
