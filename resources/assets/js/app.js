@@ -15,12 +15,18 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
-// var consumers = Vue.component('consumers', require('./components/Consumers.vue'));
-
 import Vue from 'vue'
-Vue.component('app', require('./components/App.vue'))
 
+/**
+ * Import components used in the application
+ */
+Vue.component('navigation', require('./components/Navigation'))
+Vue.component('loan-index', require('./components/loan/Index'))
+Vue.component('loan-show', require('./components/loan/Show'))
+
+/**
+ * Instantiate a new Vue instance on the #app
+ */
 new Vue({
     el: '#app',
 });
