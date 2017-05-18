@@ -17,7 +17,7 @@ class ConsumersTableSeeder extends Seeder
         $limit = 100;
 
         for ($i = 0; $i < $limit; $i++) {
-            $consumer = new \App\Stack\Consumers();
+            $consumer = new \App\Stack\Consumer();
             $consumer->title = $faker->title;
             $consumer->first_name = $faker->firstName;
             $consumer->last_name = $faker->lastName;
