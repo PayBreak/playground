@@ -19,5 +19,16 @@ Route::group(['middleware' => 'guest'], function() {
 Route::group(['middleware' => 'auth'], function() {
     Route::get('logout', 'Auth\LoginController@logout');
 
+    /* Web classes */
+    Route::group(['namespace' => 'Web'], function() {
+
+        /* Loan */
+        Route::group(['prefix' => 'loans'], function() {
+            Route::get('/', 'LoanController@index');
+            Route::get('/{id}', 'LoanController@show');
+        });
+
+    });
+
     Route::get('/', 'DashboardController@dashboard');
 });

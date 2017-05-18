@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,4 +11,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/consumers', 'ConsumersController@index');
+//Route::middleware('auth:api')->get('/consumers', 'ConsumersController@index');
+//Route::middleware('auth:api')->get('/loans', 'LoansController@index');
+
+Route::group(['middleware' => 'auth:api'], function() {
+
+    /* Api classes */
+    Route::group(['namespace' => 'Api'], function() {
+
+        /* Loan */
+        Route::group(['prefix' => 'loans'], function() {
+            Route::get('/', 'LoanController@index');
+            Route::get('/{id}', 'LoanController@show');
+        });
+
+    });
+
+});
