@@ -13,7 +13,7 @@
 
                 <!-- Right side -->
                 <div class="level-right">
-                    <p class="level-item"><a href="/loans">Loans</a></p>
+                    <p class="level-item"><a href="/items">Items</a></p>
                     <p class="level-item"><a>etc</a></p>
                     <p class="level-item"><a>etc 2</a></p>
                 </div>
