@@ -37,6 +37,17 @@ class Controller extends BaseController
     }
 
     /**
+     * @author EB
+     * @param Model $model
+     * @param $id
+     * @return mixed
+     */
+    public function getModelById(Model $model, $id)
+    {
+        return $model->findOrFail($id);
+    }
+
+    /**
      * Returns the pagination count
      *
      * @author EB
