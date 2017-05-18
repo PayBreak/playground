@@ -6,7 +6,6 @@
 <!--</template>-->
 
 <script>
-//    import Consumers from './Consumers'
     import Loans from './loan/Loans'
 
     export default {

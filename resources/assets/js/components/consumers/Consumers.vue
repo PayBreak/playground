@@ -8,14 +8,14 @@
 </template>
 
 <script>
-    import GridTable from './layout/GridTable'
+    import GridTable from '../layout/GridTable'
 
     // Detail row component
-    import DetailRow from './layout/details/ConsumersDetail'
+    import DetailRow from './ConsumersDetail'
     Vue.component('consumers-detail-row', DetailRow)   // <--- register the component to Vue
 
     // Grid filter component
-    import FilterBar from './layout/GridTableFilter'
+    import FilterBar from '../layout/GridTableFilter'
     Vue.component('filter-bar', FilterBar)   // <--- register the component to Vue
 
     export default {
