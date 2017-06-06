@@ -12,7 +12,7 @@
         name: 'app',
         components: {
 //            consumers: Consumers
-            loans: Loans
+//            loans: Loans
         }
     }
 </script>
