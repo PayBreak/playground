@@ -11,7 +11,7 @@
                       :sort-order="sortOrder"
                       :css="css.table"
                       pagination-path=""
-                      :per-page="25"
+                      :per-page="10"
                       @vuetable:pagination-data="onPaginationData"
                       @vuetable:loading="onLoading"
                       @vuetable:loaded="onLoaded"
