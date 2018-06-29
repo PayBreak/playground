@@ -1,0 +1,15 @@
+{
+    "name": "paybreak/playground",
+    "description": "AB testing playground branch",
+    "type": "project",
+    "require": {
+        "phpab/phpab": "^0.1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gergely Kreko",
+            "email": "gregory.kreko@paybreak.com"
+        }
+    ]
+}
