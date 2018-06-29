@@ -4,6 +4,8 @@
      * $ php -S localhost:8080
      * then go to localhost:8080 to visit the site
      **/
+
+require_once('./vendor/autoload.php');
 ?>
 <html>
     <head>
