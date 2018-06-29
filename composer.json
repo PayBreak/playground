@@ -3,7 +3,7 @@
     "description": "AB testing playground branch",
     "type": "project",
     "require": {
-        "phpab/phpab": "^0.1.0"
+        "phpab/phpab": "dev-master"
     },
     "license": "MIT",
     "authors": [
